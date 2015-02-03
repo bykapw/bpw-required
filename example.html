@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head><title>Example</title>
+    <script src="jquery.js"></script>
+    <script src="jquery.bpw-required.js"></script>
+    <link rel="stylesheet" href="jquery.bpw-required.css">
+</head>
+<body>
+
+ <h1>Example</h1>
+
+<script>
+var upl=null;
+$(document).ready(function(){
+  $('#form').require({
+      ctl:null,                       // error string place
+      text:'blablabla!',
+  });
+  $('#form').submit(function(){
+    var check=($(this).find('span.check'))[0];
+    if($(check).text() == ''){
+      alert('Form submited');
+    }
+    return false;
+  });
+});
+</script>
+
+<style>
+input[type=text],textarea {
+  border:1px solid #cecece;
+}
+</style>
+
+ <form id="form">
+  <table>
+   <tr>
+    <td>Field1: *</td>
+    <td><input type="text" class="required" ></td>
+   </tr>
+   <tr>
+    <td>Field2:</td>
+    <td><input type="text" class=""></td>
+   </tr>
+   <tr>
+    <td>Field3: *</td>
+    <td><textarea class="required"></textarea></td>
+   </tr>
+  </table>
+  <input type="submit">
+  <span class="check"></span>
+ </form>
+
+
+</body>
+</html>
+
