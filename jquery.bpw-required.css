@@ -1,3 +1,13 @@
 .req_error {
-	border:1px solid red !important;
+  background-color: #f2dede!important;
+}
+.req_ok {
+  border-color:#3c763d!important;
+}
+.required {
+	border-color:#970000;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075)
+}
+.required:focus {
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px rgba(52,152,219,.6)
 }

@@ -1,4 +1,4 @@
-// version 1.2
+// version 1.3
 (function($) {
   $.fn.extend({
 	  require: function(options) {
@@ -7,6 +7,19 @@
       if(!check){
         check=($(this).find('span.check'))[0];
       }
+
+			var arr=$(this).find('.required');
+			for(var i=0;i<arr.length;i++){
+        $(arr[i]).change(function(){
+          var val=$(this).val();
+          if(val == ''){
+            $(this).addClass('req_error').removeClass('req_ok');
+          }else{
+            $(this).addClass('req_ok').removeClass('req_error');
+          }
+        });
+      }
+
 		  $(this).submit(function(){
 			  $(check).text('');
 			  var arr=$(this).find('.required:visible');
