@@ -10,15 +10,14 @@
  <h1>Example</h1>
 
 <script>
-var upl=null;
 $(document).ready(function(){
   $('#form').require({
       ctl:null,                       // error string place
       text:'blablabla!',
   });
   $('#form').submit(function(){
-    var check=($(this).find('span.check'))[0];
-    if($(check).text() == ''){
+    var errors=$(this).find('.req_error');
+    if($(errors).length == 0){
       alert('Form submited');
     }
     return false;
@@ -26,31 +25,52 @@ $(document).ready(function(){
 });
 </script>
 
-<style>
-input[type=text],textarea {
-  border:1px solid #cecece;
-}
-</style>
+<pre>
+&lt;script&gt;
+$(document).ready(function(){
+  $('#form').require({
+      ctl:null,                       // error string place
+      text:'blablabla!',
+  });
+  $('#form').submit(function(){
+    var errors=$(this).find('.req_error');
+    if($(errors).length == 0){
+      alert('Form submited');
+    }
+    return false;
+  });
+});
+&lt;/script&gt;
+
+ &lt;form id="form"&gt;
+</pre>
 
  <form id="form">
   <table>
    <tr>
-    <td>Field1: *</td>
-    <td><input type="text" class="required" ></td>
+    <td>Field1 (+1 123 456-78-90): *</td>
+    <td><input type="text" class="required" req-format="^\+\d \d{3} \d{3}-\d\d-\d\d$"></td>
+    <td><pre>&lt;input type="text" class="<b>required</b>" req-format="<b>^\+\d \d{3} \d{3}-\d\d-\d\d$</b>"&gt;</pre></tr>
    </tr>
    <tr>
     <td>Field2:</td>
     <td><input type="text" class=""></td>
+    <td><pre>&lt;input type="text" &gt;</pre></tr>
    </tr>
    <tr>
     <td>Field3: *</td>
     <td><textarea class="required"></textarea></td>
+    <td><pre>&lt;textarea class="<b>required</b>"&gt;&lt;/textarea&gt;</pre></td>
    </tr>
   </table>
   <input type="submit">
-  <span class="check"></span>
+  <br>
+  <pre>&lt;span class="<b>check</b>"&gt;<span class="check"></span>&lt;/span&gt;</pre>
  </form>
 
+<pre>
+ &lt;/form&gt;
+</pre>
 
 </body>
 </html>
