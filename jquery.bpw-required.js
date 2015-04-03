@@ -1,4 +1,4 @@
-// version 1.4
+// version 1.6
 (function($) {
   $.fn.extend({
 	  require: function(options) {
@@ -23,9 +23,11 @@
         $(arr[i]).change(function(){
           check_item(this);
         });
-        $(arr[i]).keyup(function(){
-          check_item(this);
-        });
+        if($(arr[i]).attr('req-format')){
+          $(arr[i]).keyup(function(){
+            check_item(this);
+          });
+        }
       }
 
 		  $(this).submit(function(){
@@ -39,6 +41,9 @@
 				if(errs.length > 0 && check){
             var str=options.text||'Some fields required!';
 					  $(check).text(str);
+        }
+				if(errs.length > 0 ){
+            ret=false;
 				}
 			  return ret;
 		  });
